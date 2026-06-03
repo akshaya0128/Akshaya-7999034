@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 17.2 – Icon-Only Buttons</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="display-5 fw-bold mb-4">Exercise 17.2 – Icon-Only Buttons</h1>
+    <p class="lead mb-5">
+      Replace text with Bootstrap Icons using <code>&lt;i class="bi bi-*"&gt;&lt;/i&gt;</code>
+      inside button elements. Always include <code>aria-label</code> for accessibility.
+    </p>
+
+    <!-- Solid icon buttons -->
+    <h5>Solid Icon Buttons</h5>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <button class="btn btn-primary" aria-label="Home"><i class="bi bi-house-fill"></i></button>
+      <button class="btn btn-success" aria-label="Add"><i class="bi bi-plus-circle-fill"></i></button>
+      <button class="btn btn-danger" aria-label="Delete"><i class="bi bi-trash-fill"></i></button>
+      <button class="btn btn-warning" aria-label="Edit"><i class="bi bi-pencil-fill"></i></button>
+      <button class="btn btn-info" aria-label="Info"><i class="bi bi-info-circle-fill"></i></button>
+      <button class="btn btn-secondary" aria-label="Settings"><i class="bi bi-gear-fill"></i></button>
+      <button class="btn btn-dark" aria-label="Search"><i class="bi bi-search"></i></button>
+    </div>
+
+    <!-- Outline icon buttons -->
+    <h5>Outline Icon Buttons</h5>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <button class="btn btn-outline-primary" aria-label="Like"><i class="bi bi-heart"></i></button>
+      <button class="btn btn-outline-secondary" aria-label="Share"><i class="bi bi-share"></i></button>
+      <button class="btn btn-outline-success" aria-label="Download"><i class="bi bi-download"></i></button>
+      <button class="btn btn-outline-danger" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      <button class="btn btn-outline-dark" aria-label="Menu"><i class="bi bi-list"></i></button>
+    </div>
+
+    <!-- Sized icon buttons -->
+    <h5>Sized Icon Buttons</h5>
+    <div class="d-flex align-items-center flex-wrap gap-2 mb-4">
+      <button class="btn btn-primary btn-sm" aria-label="Search small"><i class="bi bi-search"></i></button>
+      <button class="btn btn-primary" aria-label="Search default"><i class="bi bi-search"></i></button>
+      <button class="btn btn-primary btn-lg" aria-label="Search large"><i class="bi bi-search"></i></button>
+    </div>
+
+    <!-- Icon button toolbar (practical example) -->
+    <h5>Text Editor Toolbar (icon buttons)</h5>
+    <div class="btn-toolbar mb-4 border rounded p-2 bg-light" role="toolbar">
+      <div class="btn-group me-2" role="group">
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Bold"><i class="bi bi-type-bold"></i></button>
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Italic"><i class="bi bi-type-italic"></i></button>
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Underline"><i class="bi bi-type-underline"></i></button>
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Strikethrough"><i class="bi bi-type-strikethrough"></i></button>
+      </div>
+      <div class="btn-group me-2" role="group">
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Align left"><i class="bi bi-text-left"></i></button>
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Align center"><i class="bi bi-text-center"></i></button>
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Align right"><i class="bi bi-text-right"></i></button>
+      </div>
+      <div class="btn-group" role="group">
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Insert image"><i class="bi bi-image"></i></button>
+        <button class="btn btn-outline-secondary btn-sm" aria-label="Insert link"><i class="bi bi-link-45deg"></i></button>
+        <button class="btn btn-outline-danger btn-sm" aria-label="Delete"><i class="bi bi-trash"></i></button>
+      </div>
+    </div>
+
+    <!-- Action card with icon buttons -->
+    <h5>Table Row Actions</h5>
+    <table class="table table-bordered align-middle">
+      <thead class="table-dark">
+        <tr><th>Name</th><th>Email</th><th>Role</th><th class="text-center">Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sarah Johnson</td>
+          <td>sarah@example.com</td>
+          <td><span class="badge bg-primary">Admin</span></td>
+          <td class="text-center">
+            <button class="btn btn-outline-warning btn-sm me-1" aria-label="Edit"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-outline-danger btn-sm" aria-label="Delete"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>Marcus Lee</td>
+          <td>marcus@example.com</td>
+          <td><span class="badge bg-secondary">User</span></td>
+          <td class="text-center">
+            <button class="btn btn-outline-warning btn-sm me-1" aria-label="Edit"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-outline-danger btn-sm" aria-label="Delete"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

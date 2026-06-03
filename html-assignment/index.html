@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityConnect — Community Event Portal</title>
+
+  <!-- Google Fonts — Exercise 5: Typography (loaded via <link>) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Exercise 1: External stylesheet (all reusable styles live here) -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Exercise 14: jQuery CDN (used in JS Exercise 14) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+
+  <!-- Exercise 1: Embedded <style> — demonstrates the embedded CSS method -->
+  <style>
+    /* Embedded CSS (Exercise 1): body background declared here */
+    body { background-color: #f8fafc; }
+  </style>
+</head>
+
+<body onbeforeunload="warnBeforeLeave(event)">
+
+<!-- ============================================================
+     HEADER — Exercise 1 (semantic structure)
+     ============================================================ -->
+<header>
+  <div class="container header-inner">
+    <!-- Logo -->
+    <a class="logo" href="#home">
+      &#9670; City<span>Connect</span>
+    </a>
+
+    <!-- Navigation — Exercise 2 -->
+    <nav id="mainNav" aria-label="Main Navigation">
+      <a href="#home"         class="active">Home</a>
+      <a href="#events">Events</a>
+      <a href="#bulletin">Bulletin</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#register">Register</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#media">Media</a>
+      <a href="#contact">Contact</a>
+      <a href="#js-exercises">JS Exercises</a>
+      <!-- External link — Exercise 2 -->
+      <a href="help.html" target="_blank" class="btn-nav">&#128279; Help</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     HERO — Exercise 1 (semantic <main>)
+     ============================================================ -->
+<main>
+
+  <!-- ── HOME ── -->
+  <section id="home">
+    <div class="container">
+      <!-- id="mainHeader" — ID selector demo, Exercise 3 -->
+      <h1 id="mainHeader">Your City.<br/>Your Community.</h1>
+      <p>
+        Discover local events, register online, find locations, and stay connected with
+        everything happening in your neighbourhood.
+      </p>
+      <div class="hero-btns">
+        <a href="#events"   class="btn btn-primary">&#128197; Browse Events</a>
+        <a href="#register" class="btn btn-outline">&#128221; Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       WELCOME BANNER — Exercise 3
+       ============================================================ -->
+  <div class="container" style="padding-top:48px;">
+    <div id="welcomeBanner">
+      <div class="msg">
+        &#128075;&nbsp; Welcome back, <strong id="userName">Resident</strong>! &nbsp;
+        <!-- Inline style for special offer — Exercise 3 -->
+        <span style="color:#fde68a; font-weight:700; font-size:1rem;">
+          &#127881; Special Offer: Free entry to all July events — use code
+          <span style="color:#fff; text-decoration:underline; cursor:pointer;">SUMMER25</span>
+        </span>
+      </div>
+      <button class="btn btn-sm btn-outline" onclick="dismissBanner()">Dismiss</button>
+    </div>
+
+    <!-- .highlight class — Exercise 3 -->
+    <p style="color:var(--muted); margin-bottom:0;">
+      Highlighted events this week:
+      <span class="highlight">Summer Fest 2025</span>,
+      <span class="highlight">Tech Talks @ Town Hall</span>, and
+      <span class="highlight">Kids Art Workshop</span>.
+    </p>
+  </div>
+
+
+  <!-- ============================================================
+       EVENTS — Exercise 2 (matching section id)
+       ============================================================ -->
+  <section id="events" class="section">
+    <div class="container">
+      <h2 class="section-title">Upcoming Events</h2>
+      <p class="section-sub">Find and join community events near you.</p>
+
+      <div class="cards">
+        <article class="card eventCard fade-in">
+          <img class="card-img"
+               src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80"
+               alt="Summer Music Festival crowd at sunset"
+               title="Summer Fest 2025" />
+          <div class="card-body">
+            <span class="card-badge">&#127926; Music</span>
+            <div class="card-title">Summer Fest 2025</div>
+            <div class="card-meta">&#128197; 12 Jul 2025 &nbsp;|&nbsp; &#128205; City Park</div>
+            <a href="#register" class="btn btn-primary btn-sm">Register &rarr;</a>
+          </div>
+        </article>
+
+        <article class="card eventCard fade-in">
+          <img class="card-img"
+               src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80"
+               alt="Tech conference speakers on stage"
+               title="Tech Talks @ Town Hall" />
+          <div class="card-body">
+            <span class="card-badge" style="background:#e0e7ff;color:#4338ca;">&#128187; Tech</span>
+            <div class="card-title">Tech Talks @ Town Hall</div>
+            <div class="card-meta">&#128197; 19 Jul 2025 &nbsp;|&nbsp; &#128205; Town Hall</div>
+            <a href="#register" class="btn btn-primary btn-sm">Register &rarr;</a>
+          </div>
+        </article>
+
+        <article class="card eventCard fade-in">
+          <img class="card-img"
+               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+               alt="Children painting at an art workshop"
+               title="Kids Art Workshop" />
+          <div class="card-body">
+            <span class="card-badge" style="background:#fce7f3;color:#be185d;">&#127912; Art</span>
+            <div class="card-title">Kids Art Workshop</div>
+            <div class="card-meta">&#128197; 26 Jul 2025 &nbsp;|&nbsp; &#128205; Community Hall</div>
+            <a href="#register" class="btn btn-primary btn-sm">Register &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       COMMUNITY BULLETIN — CSS3 Exercises 1, 6, 8, 9
+       ============================================================ -->
+  <section id="bulletin" class="section">
+    <div class="container">
+
+      <!-- Exercise 1: Inline style on heading (red colour) — one of three CSS inclusion methods -->
+      <h2 class="section-title" style="color: #b91c1c;">Community Bulletin</h2>
+      <p class="section-sub">
+        Latest announcements from your city council. Displayed in a
+        <strong>newspaper two-column layout</strong> — CSS3 Multi-Column Exercise 9.
+      </p>
+
+      <!-- Exercise 9: multi-column layout -->
+      <div class="bulletin-content">
+
+        <h4>&#128197; July Events Now Open</h4>
+        <p>
+          Registration for all July community events is now live. Residents can sign up
+          online through the portal's Registration section. Spots are limited for the
+          Kids Art Workshop and Heritage Night Market — early registration is encouraged
+          to avoid disappointment.
+        </p>
+
+        <h4>&#127981; Park Renovations Complete</h4>
+        <p>
+          The City Park renovation project has been completed ahead of schedule. The
+          new facilities include upgraded restrooms, improved lighting, a dedicated
+          cycling path, and a brand new bandstand for the upcoming Summer Fest 2025.
+          Residents are invited to the official ribbon-cutting ceremony on 5 July.
+        </p>
+
+        <!-- Exercise 6: ul with list-style-type: disc, list-style-position: outside -->
+        <h4>&#9998; What's New This Month</h4>
+        <ul class="bulletin-list">
+          <li>Free Wi-Fi installed at all community centres</li>
+          <li>New food market permit issued for Heritage Night Market</li>
+          <li>Youth coding workshop — register before 10 July</li>
+          <li>Community garden plots available — apply at City Hall</li>
+        </ul>
+
+        <h4>&#128204; Council Notice</h4>
+        <p>
+          The next City Council meeting will be held on 15 July at 7 pm in Town Hall.
+          Residents are welcome to attend and raise questions during the open forum.
+          Agenda items include the proposed cycle-lane extension and the 2026 events
+          budget allocation. Written submissions accepted until 12 July.
+        </p>
+
+        <h4>&#127774; Sustainability Update</h4>
+        <p>
+          The Green City Drive collected over 2 tonnes of recyclable materials in June.
+          The council thanks the 340 volunteers who participated. The next clean-up day
+          is scheduled for 20 July — sign up through the Events section of this portal.
+        </p>
+
+      </div><!-- /bulletin-content -->
+
+      <!-- Exercise 8: Box Model Demo — visibility: hidden vs display: none -->
+      <div style="margin-top: 40px;">
+        <h3 style="font-size:1rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;">
+          CSS3 Exercise 8 — Box Model: <code>visibility:hidden</code> vs <code>display:none</code>
+        </h3>
+        <p style="font-size:.88rem; color:var(--muted); margin-bottom:0;">
+          Three boxes below. The middle one uses <code>visibility:hidden</code> — it is
+          invisible but <strong>still holds its space</strong>. Toggle with the buttons to compare.
+        </p>
+        <div class="demo-row" id="demoRow">
+          <div class="demo-box" id="demoA">Box A &mdash; visible</div>
+          <div class="demo-box" id="demoB">Box B &mdash; hidden</div>
+          <div class="demo-box" id="demoC">Box C &mdash; visible</div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+          <button class="btn btn-sm btn-primary" onclick="toggleVisibility()">
+            Toggle <code>visibility:hidden</code>
+          </button>
+          <button class="btn btn-sm" style="background:#e0e7ff;color:#4338ca;"
+                  onclick="toggleDisplay()">
+            Toggle <code>display:none</code>
+          </button>
+          <button class="btn btn-sm" style="background:var(--border);color:var(--text);"
+                  onclick="resetDemo()">Reset Demo</button>
+        </div>
+        <p id="demoNote" style="font-size:.82rem; color:var(--muted); margin-top:10px;"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       IMAGE GALLERY TABLE — Exercise 4
+       ============================================================ -->
+  <section id="gallery" class="section" style="background:#f1f5f9;">
+    <div class="container">
+      <h2 class="section-title">Event Gallery</h2>
+      <p class="section-sub">Photos from past community events. <em>Double-click any image to enlarge.</em></p>
+
+      <div class="gallery-wrap">
+        <table class="gallery" aria-label="Community event photo gallery">
+          <caption>
+            All photographs are community property. &copy; CityConnect 2025.
+            Double-click an image to zoom in; double-click again to restore.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Event 1</th>
+              <th scope="col">Event 2</th>
+              <th scope="col">Event 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1 -->
+            <tr>
+              <td>
+                <img class="gallery-img"
+                     src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=300&q=80"
+                     alt="Outdoor concert with colourful stage lights"
+                     title="Annual Music Gala 2024"
+                     ondblclick="toggleEnlarge(this)" />
+                <div class="gallery-img-caption">Annual Music Gala 2024</div>
+              </td>
+              <td>
+                <img class="gallery-img"
+                     src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=300&q=80"
+                     alt="Speaker at community conference"
+                     title="Innovation Summit 2024"
+                     ondblclick="toggleEnlarge(this)" />
+                <div class="gallery-img-caption">Innovation Summit 2024</div>
+              </td>
+              <td>
+                <img class="gallery-img"
+                     src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&q=80"
+                     alt="Group of volunteers planting trees"
+                     title="Green City Drive 2024"
+                     ondblclick="toggleEnlarge(this)" />
+                <div class="gallery-img-caption">Green City Drive 2024</div>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+              <td>
+                <img class="gallery-img"
+                     src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=300&q=80"
+                     alt="Food stalls at a street fair"
+                     title="Street Food Festival 2024"
+                     ondblclick="toggleEnlarge(this)" />
+                <div class="gallery-img-caption">Street Food Festival 2024</div>
+              </td>
+              <td>
+                <img class="gallery-img"
+                     src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=300&q=80"
+                     alt="Children at an outdoor sports day"
+                     title="Kids Sports Day 2024"
+                     ondblclick="toggleEnlarge(this)" />
+                <div class="gallery-img-caption">Kids Sports Day 2024</div>
+              </td>
+              <td>
+                <img class="gallery-img"
+                     src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=300&q=80"
+                     alt="Night market lights and stalls"
+                     title="Heritage Night Market 2024"
+                     ondblclick="toggleEnlarge(this)" />
+                <div class="gallery-img-caption">Heritage Night Market 2024</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       EVENT REGISTRATION FORM — Exercise 5
+       ============================================================ -->
+  <section id="register" class="section">
+    <div class="container" style="max-width:760px;">
+      <h2 class="section-title">Event Registration</h2>
+      <p class="section-sub">Complete the form below to reserve your spot.</p>
+
+      <div style="background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:36px;">
+        <form id="registrationForm" novalidate>
+          <div class="form-grid">
+
+            <!-- Name -->
+            <div class="form-group">
+              <label for="regName">Full Name *</label>
+              <input type="text" id="regName" name="name"
+                     placeholder="e.g. Alex Johnson"
+                     autofocus required />
+              <span class="err-msg" id="nameErr">Please enter your full name.</span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="regEmail">Email Address *</label>
+              <input type="email" id="regEmail" name="email"
+                     placeholder="you@example.com"
+                     required />
+              <span class="err-msg" id="emailErr">Please enter a valid email.</span>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+              <label for="regDate">Preferred Date *</label>
+              <input type="date" id="regDate" name="date" required />
+              <span class="err-msg" id="dateErr">Please select a date.</span>
+            </div>
+
+            <!-- Event Type (select) -->
+            <div class="form-group">
+              <label for="regEvent">Event Type *</label>
+              <select id="regEvent" name="event" required
+                      onchange="handleEventChange(this.value)">
+                <option value="">— Select an event —</option>
+                <option value="music"   data-fee="Free">&#127926; Summer Fest 2025 (Music)</option>
+                <option value="tech"    data-fee="$10">&#128187; Tech Talks @ Town Hall</option>
+                <option value="art"     data-fee="$5">&#127912; Kids Art Workshop</option>
+                <option value="sports"  data-fee="Free">&#9917; Community Sports Day</option>
+                <option value="market"  data-fee="$2">&#127978; Heritage Night Market</option>
+              </select>
+            </div>
+
+            <!-- Message / Textarea -->
+            <div class="form-group form-full">
+              <label for="regMessage">Special Requirements / Message</label>
+              <textarea id="regMessage" name="message" rows="4"
+                        placeholder="Accessibility needs, dietary requirements, questions…"
+                        onkeyup="countChars(this)"></textarea>
+              <div class="char-count"><span id="charCount">0</span> / 500 characters</div>
+            </div>
+
+          </div><!-- /form-grid -->
+
+          <!-- Submit -->
+          <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+            <button type="submit" class="btn btn-primary"
+                    onclick="submitRegistration(event)">
+              &#10003; &nbsp;Register Now
+            </button>
+            <button type="reset" class="btn btn-outline"
+                    style="color:var(--muted); border-color:var(--border);"
+                    onclick="resetForm()">
+              &#8635; &nbsp;Reset
+            </button>
+          </div>
+
+          <!-- Output element — Exercise 5 -->
+          <output id="confirmOutput" role="status" aria-live="polite"></output>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       FEEDBACK — Exercise 6 (event handling)
+       ============================================================ -->
+  <section id="feedback" class="section" style="background:#f1f5f9;">
+    <div class="container" style="max-width:760px;">
+      <h2 class="section-title">Event Feedback</h2>
+      <p class="section-sub">Share your experience. Your feedback shapes future events.</p>
+
+      <div style="background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:36px;">
+        <div class="form-grid">
+
+          <!-- Phone — onblur validation — Exercise 6 -->
+          <div class="form-group">
+            <label for="fbPhone">Phone Number</label>
+            <input type="tel" id="fbPhone" name="phone"
+                   placeholder="+1 (555) 000-0000"
+                   onblur="validatePhone(this)" />
+            <span class="err-msg" id="phoneErr">Invalid phone number format.</span>
+            <span class="hint">We validate on field exit (onblur).</span>
+          </div>
+
+          <!-- Dropdown — onchange fee display — Exercise 6 -->
+          <div class="form-group">
+            <label for="fbEvent">Event Attended</label>
+            <select id="fbEvent" name="fbEvent"
+                    onchange="showEventFee(this)">
+              <option value="">— Select an event —</option>
+              <option value="music"  data-fee="Free">&#127926; Summer Fest 2025</option>
+              <option value="tech"   data-fee="$10">&#128187; Tech Talks</option>
+              <option value="art"    data-fee="$5">&#127912; Kids Art Workshop</option>
+              <option value="sports" data-fee="Free">&#9917; Sports Day</option>
+              <option value="market" data-fee="$2">&#127978; Night Market</option>
+            </select>
+            <div class="fee-display" id="feeDisplay">Select an event to see the fee</div>
+          </div>
+
+          <!-- Feedback textarea — key events — Exercise 6 -->
+          <div class="form-group form-full">
+            <label for="fbMessage">Your Feedback</label>
+            <textarea id="fbMessage" name="fbMessage" rows="5"
+                      placeholder="Tell us about your experience…"
+                      onkeyup="countFeedbackChars(this)"
+                      onkeydown="logKeyEvent(event)"></textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+              <span class="hint" id="keyLog">Press any key to see key events…</span>
+              <span class="char-count"><span id="fbCharCount">0</span> / 300</span>
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="form-group form-full">
+            <label>Rating</label>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="btn btn-sm" style="background:#fef3c7;color:#92400e; border:none;"
+                      onclick="setRating(1, this)">&#9733; Poor</button>
+              <button class="btn btn-sm" style="background:#fef3c7;color:#92400e; border:none;"
+                      onclick="setRating(2, this)">&#9733;&#9733; Fair</button>
+              <button class="btn btn-sm" style="background:#fef3c7;color:#92400e; border:none;"
+                      onclick="setRating(3, this)">&#9733;&#9733;&#9733; Good</button>
+              <button class="btn btn-sm" style="background:#fef3c7;color:#92400e; border:none;"
+                      onclick="setRating(4, this)">&#9733;&#9733;&#9733;&#9733; Great</button>
+              <button class="btn btn-sm" style="background:#fef3c7;color:#92400e; border:none;"
+                      onclick="setRating(5, this)">&#9733;&#9733;&#9733;&#9733;&#9733; Excellent</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- onclick submit — Exercise 6 -->
+        <div style="margin-top:24px;">
+          <button class="btn btn-success" onclick="submitFeedback()">
+            &#128172; &nbsp;Submit Feedback
+          </button>
+        </div>
+
+        <output id="fbOutput" role="status" aria-live="polite"></output>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       VIDEO INVITE — Exercise 7
+       ============================================================ -->
+  <section id="media" class="section">
+    <div class="container" style="max-width:760px;">
+      <h2 class="section-title">Event Promo Video</h2>
+      <p class="section-sub">Watch our community highlight reel.</p>
+
+      <div class="video-wrapper">
+        <!-- Video element — Exercise 7 -->
+        <video id="promoVideo" controls
+               oncanplay="onVideoReady()"
+               onplay="debugLog('▶ Video started playing', 'ok')"
+               onpause="debugLog('⏸ Video paused', 'warn')"
+               onended="debugLog('⏹ Video playback ended', 'info')"
+               poster="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg" />
+          Your browser does not support the video tag. Please update your browser.
+        </video>
+        <div id="videoStatus">&#10003; Video ready to play!</div>
+      </div>
+
+      <p style="margin-top:16px; color:var(--muted); font-size:.9rem;">
+        &#9432; &nbsp;A warning dialog will appear if you navigate away from a partially-filled form.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       STORAGE PREFERENCES — Exercise 8
+       ============================================================ -->
+  <section id="preferences" class="section" style="background:#f1f5f9;">
+    <div class="container" style="max-width:680px;">
+      <h2 class="section-title">Save Your Preferences</h2>
+      <p class="section-sub">We remember your favourite event type between visits.</p>
+
+      <div class="storage-card">
+        <div class="form-group">
+          <label for="prefEvent">Preferred Event Type</label>
+          <select id="prefEvent" onchange="savePreference(this.value)">
+            <option value="">— Choose a preference —</option>
+            <option value="music">&#127926; Music Events</option>
+            <option value="tech">&#128187; Tech Events</option>
+            <option value="art">&#127912; Art &amp; Culture</option>
+            <option value="sports">&#9917; Sports</option>
+            <option value="food">&#127814; Food &amp; Markets</option>
+          </select>
+        </div>
+
+        <div id="storedDisplay">
+          <em style="color:var(--muted);">No preference saved yet…</em>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-primary btn-sm" onclick="loadPreference()">
+            &#128260; Load Saved Preference
+          </button>
+          <button class="btn btn-danger btn-sm" onclick="clearPreferences()">
+            &#128465; Clear All Preferences
+          </button>
+        </div>
+
+        <div class="hint" style="margin-top:-4px;">
+          localStorage persists across browser sessions; sessionStorage only lasts the current session.
+          Both are cleared by the button above.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       GEOLOCATION — Exercise 9
+       ============================================================ -->
+  <section id="contact" class="section">
+    <div class="container" style="max-width:680px;">
+      <h2 class="section-title">Find Nearby Events</h2>
+      <p class="section-sub">Allow location access to discover events close to you.</p>
+
+      <button class="btn btn-primary" onclick="findNearbyEvents()">
+        &#128205; &nbsp;Find Nearby Events
+      </button>
+
+      <div id="geoResult">
+        <div id="geoContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       JAVASCRIPT EXERCISES — Exercises 1–14
+       ============================================================ -->
+  <section id="js-exercises" class="section" style="background:#f8fafc;">
+    <div class="container">
+      <h2 class="section-title">JavaScript Exercises</h2>
+      <p class="section-sub">
+        All 14 exercises are live on this page. Open DevTools Console
+        <strong>F12</strong> to see detailed step-by-step logs from <code>main.js</code>.
+      </p>
+
+      <!-- ── Ex 1 & 2 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 1–2 &nbsp;·&nbsp; Basics, Data Types &amp; Operators</div>
+        <h3 class="ex-title">JavaScript Setup, Variables &amp; Seat Counter</h3>
+        <p id="ex2-info" style="font-family:monospace; background:#f1f5f9; padding:8px 14px; border-radius:6px; font-size:.9rem;"></p>
+        <p id="ex2-seats" style="font-weight:700; color:var(--primary); margin:10px 0 14px; font-size:1rem;"></p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button id="ex2-increase" class="btn btn-primary btn-sm">+ Seat &nbsp;<code style="opacity:.8;">(++)</code></button>
+          <button id="ex2-decrease" class="btn btn-sm" style="background:#fee2e2;color:#b91c1c;">&#8722; Seat &nbsp;<code style="opacity:.8;">(--)</code></button>
+        </div>
+        <p class="hint" style="margin-top:10px;">
+          <code>const eventName</code>, <code>const eventDate</code> — never reassigned.
+          <code>let availableSeats</code> — updated on each click. Template literal builds the info string above.
+          <em>console.log("Welcome to the Community Portal")</em> fires on script load — check DevTools.
+        </p>
+      </div>
+
+      <!-- ── Ex 3 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 3 &nbsp;·&nbsp; Conditionals, Loops &amp; Error Handling</div>
+        <h3 class="ex-title">Event Status List — forEach · if-else · try-catch</h3>
+        <ul id="ex3-list" style="list-style:none; padding:0; margin-bottom:14px;"></ul>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button id="ex3-reg-btn" class="btn btn-primary btn-sm">Register "Demo User" for Summer Fest</button>
+          <span id="ex3-result" style="font-size:.9rem;"></span>
+        </div>
+        <p class="hint" style="margin-top:10px;">
+          <code>allEvents.forEach()</code> loops every event; <code>if-else</code> decides the status label.
+          The register button calls <code>registerUser()</code> which wraps <code>registerWithErrorHandling()</code>
+          in a <code>try-catch</code>. Try clicking it multiple times to watch seats drop and errors fire.
+        </p>
+      </div>
+
+      <!-- ── Ex 4 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 4 &nbsp;·&nbsp; Functions, Scope, Closures &amp; Higher-Order</div>
+        <h3 class="ex-title">addEvent() · registerUser() · filterEventsByCategory() · Closure Tracker</h3>
+        <div class="form-grid" style="margin-bottom:14px;">
+          <div class="form-group">
+            <label for="ex4-name">Event Name</label>
+            <input id="ex4-name" type="text" placeholder="e.g. Jazz Night" />
+          </div>
+          <div class="form-group">
+            <label for="ex4-date">Date</label>
+            <input id="ex4-date" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="ex4-cat">Category</label>
+            <select id="ex4-cat">
+              <option value="">&#8212; choose &#8212;</option>
+              <option value="music">&#127926; Music</option>
+              <option value="tech">&#128187; Tech</option>
+              <option value="art">&#127912; Art</option>
+              <option value="sports">&#9917; Sports</option>
+              <option value="food">&#127978; Food</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ex4-seats">Seats</label>
+            <input id="ex4-seats" type="number" value="20" min="1" />
+          </div>
+        </div>
+        <button id="ex4-add-btn" class="btn btn-primary btn-sm">addEvent()</button>
+        <div id="ex4-stats" style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+          <em style="color:var(--muted); font-size:.875rem;">Register via Ex 7–8 cards to see category counts here.</em>
+        </div>
+        <p class="hint" style="margin-top:10px;">
+          <code>createCategoryTracker()</code> returns an object whose <code>counts</code> map is
+          private to its closure scope. <code>filterEventsByCategory(cat, callback)</code> is a
+          higher-order function — it receives and invokes a callback with the filtered results.
+        </p>
+      </div>
+
+      <!-- ── Ex 5 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 5 &nbsp;·&nbsp; Objects &amp; Prototypes</div>
+        <h3 class="ex-title">Event Constructor · Prototype Method · Object.entries()</h3>
+        <div id="ex5-output"></div>
+        <p class="hint" style="margin-top:10px;">
+          <code>checkAvailability()</code> lives on <code>EventObj.prototype</code> — shared by every
+          instance without copying it. <code>Object.entries(protoEvent)</code> returns own enumerable
+          key–value pairs only (prototype methods excluded).
+        </p>
+      </div>
+
+      <!-- ── Ex 6 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 6 &nbsp;·&nbsp; Arrays &amp; Methods</div>
+        <h3 class="ex-title">.push() &nbsp;·&nbsp; .filter() &nbsp;·&nbsp; .map()</h3>
+        <div id="ex6-output"></div>
+        <p class="hint" style="margin-top:10px;">
+          All operations run on a spread clone (<code>[...allEvents]</code>) so the live
+          <code>allEvents</code> array is never mutated. Add events above and click the Refresh
+          button to see the counts update.
+        </p>
+        <button onclick="renderEx6()" class="btn btn-sm" style="margin-top:10px; background:#e0e7ff;color:#4338ca;">
+          Refresh Array Demo
+        </button>
+      </div>
+
+      <!-- ── Ex 7 & 8 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 7–8 &nbsp;·&nbsp; DOM Manipulation &amp; Event Handling</div>
+        <h3 class="ex-title">Dynamic Event Cards — createElement · onchange · keydown · onclick</h3>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; align-items:center;">
+          <input id="searchEvents" type="text"
+                 placeholder="&#128269; Quick search by name (keydown)&#8230;"
+                 style="flex:1; min-width:200px; padding:9px 13px; border:1px solid var(--border);
+                        border-radius:6px; font-size:.9rem; outline:none;" />
+          <select id="categoryFilter"
+                  style="padding:9px 13px; border:1px solid var(--border); border-radius:6px;
+                         font-size:.9rem; background:var(--card); color:var(--text); cursor:pointer;">
+            <option value="">All Categories</option>
+            <option value="music">&#127926; Music</option>
+            <option value="tech">&#128187; Tech</option>
+            <option value="art">&#127912; Art</option>
+            <option value="sports">&#9917; Sports</option>
+            <option value="food">&#127978; Food</option>
+          </select>
+        </div>
+        <div id="dynamicEventsList" class="js-cards-grid"></div>
+        <p class="hint" style="margin-top:14px;">
+          Cards are built entirely via <code>createElement()</code> + <code>appendChild()</code>.
+          "Register" uses <code>onclick</code>, the dropdown uses <code>onchange</code>,
+          and the search field uses <code>keydown</code>. Cancelling a card removes it from the DOM.
+        </p>
+      </div>
+
+      <!-- ── Ex 9 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 9 &nbsp;·&nbsp; Async JS — Promises &amp; Async/Await</div>
+        <h3 class="ex-title">Fetch Mock Event Data from API</h3>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">
+          <button id="ex9-promise-btn" class="btn btn-primary btn-sm">
+            fetch().then().catch()
+          </button>
+          <button id="ex9-async-btn" class="btn btn-sm" style="background:#e0e7ff;color:#4338ca;">
+            async / await
+          </button>
+        </div>
+        <div id="ex9-spinner" style="display:none; align-items:center; gap:12px;
+             color:var(--muted); margin-bottom:10px; font-size:.9rem;">
+          <div class="spinner"></div> Fetching from API&#8230;
+        </div>
+        <div id="ex9-output"></div>
+        <p class="hint" style="margin-top:10px;">
+          Data is fetched from <code>jsonplaceholder.typicode.com</code> as a stand-in for a real
+          events API. The spinner is shown while the request is in-flight and hidden on resolution
+          or error. Both buttons hit the same endpoint — one uses <code>.then()</code>, the
+          other <code>await</code>.
+        </p>
+      </div>
+
+      <!-- ── Ex 10 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 10 &nbsp;·&nbsp; Modern JavaScript (ES6+)</div>
+        <h3 class="ex-title">Default Params &nbsp;·&nbsp; Destructuring &nbsp;·&nbsp; Spread Operator</h3>
+        <div id="ex10-output"></div>
+      </div>
+
+      <!-- ── Ex 11 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 11 &nbsp;·&nbsp; Working with Forms</div>
+        <h3 class="ex-title">form.elements · preventDefault · Inline Validation</h3>
+        <p style="color:var(--muted); font-size:.9rem; margin-bottom:12px;">
+          Fill in the <a href="#register" style="color:var(--primary);">Registration Form</a>
+          above, then click below to read all inputs via <code>form.elements</code> and validate them.
+        </p>
+        <button id="ex11-btn" class="btn btn-primary btn-sm">Read &amp; Validate form.elements</button>
+        <div id="ex11-output" style="margin-top:12px; font-size:.9rem; line-height:1.6;"></div>
+        <p class="hint" style="margin-top:10px;">
+          <code>event.preventDefault()</code> is called on form submit (see <code>submitRegistration()</code>
+          in the inline script). Errors are shown inline next to fields. This button reads the live
+          form state via <code>form.elements['name']</code>, etc.
+        </p>
+      </div>
+
+      <!-- ── Ex 12 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 12 &nbsp;·&nbsp; AJAX &amp; Fetch API (POST)</div>
+        <h3 class="ex-title">POST Registration Data to Mock Server</h3>
+        <button id="ex12-btn" class="btn btn-primary btn-sm">
+          POST via fetch() &nbsp;<small>(1.5 s simulated delay)</small>
+        </button>
+        <div id="ex12-output" style="margin-top:12px; font-size:.9rem; line-height:1.6;"></div>
+        <p class="hint" style="margin-top:10px;">
+          <code>setTimeout()</code> wraps a Promise to simulate a 1.5 s server round-trip before
+          the actual <code>fetch()</code> POST fires. <code>Content-Type: application/json</code>
+          is set in the request headers, and the mock server echoes back a generated <code>id</code>.
+        </p>
+      </div>
+
+      <!-- ── Ex 13 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 13 &nbsp;·&nbsp; Debugging &amp; Testing</div>
+        <h3 class="ex-title">Form Submission Debug Trace — console.group · Breakpoint</h3>
+        <p style="color:var(--muted); font-size:.9rem; margin-bottom:12px;">
+          Runs a step-by-step grouped trace in the browser console showing captured form values,
+          validation results, and the prepared fetch payload.
+          Add a breakpoint in DevTools at <code>main.js</code> or uncomment the
+          <code>debugger;</code> statement to pause execution mid-trace.
+        </p>
+        <button id="ex13-btn" class="btn btn-primary btn-sm">Run Debug Trace (check F12 Console)</button>
+        <div id="ex13-output" style="margin-top:12px; font-size:.9rem; line-height:1.6;"></div>
+        <p class="hint" style="margin-top:10px;">
+          Open the <strong>Network</strong> tab in DevTools and click
+          <em>POST via fetch()</em> in Ex 12 to inspect the full request/response including headers
+          and payload. Use <strong>Sources</strong> → <strong>main.js</strong> to set breakpoints.
+        </p>
+      </div>
+
+      <!-- ── Ex 14 ── -->
+      <div class="ex-panel">
+        <div class="ex-label">Ex 14 &nbsp;·&nbsp; jQuery &amp; JS Frameworks</div>
+        <h3 class="ex-title">$().click() &nbsp;·&nbsp; .fadeIn() &nbsp;·&nbsp; .fadeOut()</h3>
+        <button id="registerBtn" class="btn btn-primary" style="margin-bottom:20px;">
+          Register (jQuery)
+        </button>
+        <div id="jqueryCards" class="js-cards-grid">
+          <div class="js-event-card-jq js-event-card">
+            <span class="js-card-badge">music</span>
+            <div class="js-card-title">Summer Fest 2025</div>
+            <div class="js-card-meta">&#128197; 12 Jul 2025 &nbsp;|&nbsp; &#129681; 50 seats</div>
+          </div>
+          <div class="js-event-card-jq js-event-card">
+            <span class="js-card-badge">tech</span>
+            <div class="js-card-title">Tech Talks @ Town Hall</div>
+            <div class="js-card-meta">&#128197; 19 Jul 2025 &nbsp;|&nbsp; &#129681; 30 seats</div>
+          </div>
+          <div class="js-event-card-jq js-event-card">
+            <span class="js-card-badge">art</span>
+            <div class="js-card-title">Kids Art Workshop</div>
+            <div class="js-card-meta">&#128197; 26 Jul 2025 &nbsp;|&nbsp; &#129681; 0 seats</div>
+          </div>
+        </div>
+        <div class="hint" style="margin-top:18px;">
+          <strong>Why move to React or Vue?</strong>
+          As this portal grows — more event types, user sessions, real-time updates — manually
+          querying and updating the DOM with jQuery becomes brittle and hard to maintain.
+          React and Vue provide <em>component-based architecture</em> with reactive data binding:
+          change a variable and the UI re-renders automatically, making complex UIs like this portal
+          easier to scale, test, and keep in sync.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       DEBUG CONSOLE — Exercise 10
+       ============================================================ -->
+  <section id="debug" class="section" style="background:#0f172a; padding:60px 0;">
+    <div class="container">
+      <h2 class="section-title" style="color:#fff;">
+        &#128187; &nbsp;Developer Debug Console
+        <span style="font-size:1rem; font-weight:400; color:var(--muted); margin-left:12px;">
+          Exercise 11 — Chrome DevTools Companion
+        </span>
+      </h2>
+      <p style="color:var(--muted); margin-bottom:24px; font-size:.95rem;">
+        All page interactions are logged here in real time. Open Chrome DevTools
+        (F12) to also see them in the Console tab with breakpoints.
+      </p>
+
+      <div id="debugConsole" aria-label="Debug output console" aria-live="polite">
+        <div class="debug-line info">// CityConnect Debug Console — ready</div>
+        <div class="debug-line ok">// Page loaded: <span id="loadTime"></span></div>
+      </div>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+        <button class="btn btn-sm" style="background:#1e3a8a;color:#93c5fd;border:1px solid #2563eb;"
+                onclick="debugLog('Manual test log fired', 'info')">
+          &#9654; Log Test Message
+        </button>
+        <button class="btn btn-sm" style="background:#1e3a8a;color:#fbbf24;border:1px solid #d97706;"
+                onclick="debugLog('Sample warning: event fee not set', 'warn')">
+          &#9888; Log Warning
+        </button>
+        <button class="btn btn-sm" style="background:#1e3a8a;color:#f87171;border:1px solid #ef4444;"
+                onclick="debugLog('Sample error: form validation failed', 'err')">
+          &#10007; Log Error
+        </button>
+        <button class="btn btn-sm" style="background:#1e3a8a;color:#6b7280;border:1px solid #374151;"
+                onclick="clearConsole()">
+          &#128465; Clear Console
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER — Exercise 1 (semantic <footer>)
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>&#9670; CityConnect</h4>
+        <p style="font-size:.875rem; line-height:1.7;">
+          A lightweight community portal built for residents to discover and participate in local events.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#events">Upcoming Events</a>
+        <a href="#bulletin">Community Bulletin</a>
+        <a href="#gallery">Photo Gallery</a>
+        <a href="#register">Registration</a>
+        <a href="#feedback">Feedback</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#preferences">My Preferences</a>
+        <a href="#contact">Find Nearby</a>
+        <a href="help.html" target="_blank">Help Centre</a>
+        <a href="#debug">Debug Console</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@cityconnect.example">info@cityconnect.example</a>
+        <a href="tel:+15550001234">+1 (555) 000-1234</a>
+        <a href="#">City Hall, 1 Main St</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 CityConnect Community Portal &mdash; Built for the HTML5 Exercises Assignment
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     MODAL — confirmation dialog
+     ============================================================ -->
+<div class="modal-overlay" id="confirmModal" role="dialog" aria-modal="true"
+     aria-labelledby="modalTitle">
+  <div class="modal">
+    <div style="font-size:3rem; margin-bottom:8px;">&#127881;</div>
+    <h3 id="modalTitle">Registration Confirmed!</h3>
+    <p id="modalBody">You have successfully registered. Check your email for confirmation details.</p>
+    <button class="btn btn-primary" onclick="closeModal()">&#10003; &nbsp;Done</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT — Exercises 5, 6, 7, 8, 9, 10
+     ============================================================ -->
+<script>
+  /* ── Globals ── */
+  let currentRating  = 0;
+  let formDirty      = false;   // Exercise 7 — onbeforeunload
+  let debugSeq       = 0;
+
+  /* ── Exercise 10: Debug logger ── */
+  function debugLog(msg, type = 'ok') {
+    debugSeq++;
+    const ts   = new Date().toLocaleTimeString();
+    const cons = document.getElementById('debugConsole');
+    const line = document.createElement('div');
+    line.className = `debug-line ${type}`;
+    line.textContent = `[${ts}] #${debugSeq} ${msg}`;
+    cons.appendChild(line);
+    cons.scrollTop = cons.scrollHeight;
+
+    /* Mirror to real browser console with appropriate level */
+    if (type === 'err')  console.error(msg);
+    else if (type === 'warn') console.warn(msg);
+    else console.log(`[CityConnect] ${msg}`);
+  }
+
+  function clearConsole() {
+    document.getElementById('debugConsole').innerHTML =
+      '<div class="debug-line info">// Console cleared</div>';
+    debugSeq = 0;
+  }
+
+  /* Stamp the load time */
+  document.getElementById('loadTime').textContent = new Date().toLocaleString();
+  debugLog('DOM fully loaded', 'ok');
+
+
+  /* ── Exercise 3: Welcome banner dismiss ── */
+  function dismissBanner() {
+    const b = document.getElementById('welcomeBanner');
+    b.style.transition = 'opacity .4s';
+    b.style.opacity = '0';
+    setTimeout(() => b.style.display = 'none', 400);
+    debugLog('Welcome banner dismissed', 'info');
+  }
+
+  /* ── Exercise 4: Double-click image enlarge ── */
+  function toggleEnlarge(img) {
+    const wasEnlarged = img.classList.contains('enlarged');
+    /* Collapse any other enlarged image first */
+    document.querySelectorAll('.gallery-img.enlarged').forEach(i => i.classList.remove('enlarged'));
+    if (!wasEnlarged) {
+      img.classList.add('enlarged');
+      debugLog(`Image enlarged: "${img.title}"`, 'ok');
+    } else {
+      debugLog(`Image restored: "${img.title}"`, 'info');
+    }
+  }
+
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 5: Registration Form
+  ──────────────────────────────────────────────────────────── */
+  function countChars(el) {
+    const len = el.value.length;
+    document.getElementById('charCount').textContent = len;
+    if (len > 500) el.value = el.value.substring(0, 500);
+    formDirty = true;
+  }
+
+  function handleEventChange(val) {
+    if (val) {
+      debugLog(`Event type selected: ${val}`, 'ok');
+      /* Sync with preferences section */
+      const pref = document.getElementById('prefEvent');
+      if (pref) pref.value = val;
+    }
+  }
+
+  function submitRegistration(e) {
+    e.preventDefault();
+    const name  = document.getElementById('regName');
+    const email = document.getElementById('regEmail');
+    const date  = document.getElementById('regDate');
+    const event = document.getElementById('regEvent');
+
+    let valid = true;
+
+    [name, email, date, event].forEach(f => { f.classList.remove('error', 'valid'); });
+
+    if (!name.value.trim())   { showErr(name,  'nameErr');  valid = false; }
+    else                       { name.classList.add('valid'); }
+
+    if (!validateEmail(email.value)) { showErr(email, 'emailErr'); valid = false; }
+    else                              { email.classList.add('valid'); }
+
+    if (!date.value)  { showErr(date,  'dateErr');  valid = false; }
+    else               { date.classList.add('valid'); }
+
+    if (!valid) {
+      debugLog('Registration validation failed', 'warn');
+      return;
+    }
+
+    /* Show <output> element — Exercise 5 */
+    const out = document.getElementById('confirmOutput');
+    out.value = `✓ Thank you, ${name.value}! You're registered for the ${
+      event.options[event.selectedIndex].text || 'selected event'
+    } on ${date.value}. A confirmation has been sent to ${email.value}.`;
+    out.className = 'show';
+
+    debugLog(`Registration submitted for: ${name.value} <${email.value}>`, 'ok');
+    formDirty = false;
+
+    /* Modal confirm */
+    document.getElementById('modalBody').textContent =
+      `${name.value}, you're all set for ${event.options[event.selectedIndex].text || 'the event'} on ${date.value}!`;
+    openModal();
+  }
+
+  function showErr(field, errId) {
+    field.classList.add('error');
+    document.getElementById(errId).classList.add('show');
+    field.addEventListener('input', () => {
+      field.classList.remove('error');
+      document.getElementById(errId).classList.remove('show');
+    }, { once: true });
+  }
+
+  function validateEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function resetForm() {
+    document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea')
+      .forEach(f => f.classList.remove('error','valid'));
+    document.querySelectorAll('.err-msg').forEach(e => e.classList.remove('show'));
+    document.getElementById('confirmOutput').className = '';
+    document.getElementById('charCount').textContent = '0';
+    formDirty = false;
+    debugLog('Registration form reset', 'info');
+  }
+
+  /* Modal helpers */
+  function openModal()  { document.getElementById('confirmModal').classList.add('open'); }
+  function closeModal() { document.getElementById('confirmModal').classList.remove('open'); }
+
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 6: Feedback Event Handlers
+  ──────────────────────────────────────────────────────────── */
+
+  /* onblur — phone validation */
+  function validatePhone(el) {
+    const raw  = el.value.trim();
+    const err  = document.getElementById('phoneErr');
+    const ok   = /^[\+]?[\d\s\-\(\)]{7,15}$/.test(raw);
+
+    if (raw && !ok) {
+      el.classList.add('error');
+      err.classList.add('show');
+      debugLog(`Phone validation failed: "${raw}"`, 'warn');
+    } else {
+      el.classList.remove('error');
+      err.classList.remove('show');
+      if (raw) debugLog(`Phone validated: ${raw}`, 'ok');
+    }
+  }
+
+  /* onchange — event fee display */
+  function showEventFee(sel) {
+    const opt = sel.options[sel.selectedIndex];
+    const fee = opt.dataset.fee || '—';
+    const display = document.getElementById('feeDisplay');
+    if (sel.value) {
+      display.innerHTML = `<strong>&#128176; Event Fee:</strong>&nbsp; ${fee}`;
+      debugLog(`Event selected in feedback: ${opt.text} — fee: ${fee}`, 'ok');
+    } else {
+      display.textContent = 'Select an event to see the fee';
+    }
+  }
+
+  /* keydown — log key event */
+  function logKeyEvent(e) {
+    document.getElementById('keyLog').textContent =
+      `Key: "${e.key}" | Code: ${e.code} | keyCode: ${e.keyCode}`;
+  }
+
+  /* keyup — char counter */
+  function countFeedbackChars(el) {
+    const len = el.value.length;
+    document.getElementById('fbCharCount').textContent = len;
+    if (len > 300) el.value = el.value.substring(0, 300);
+    formDirty = true;
+  }
+
+  /* Rating buttons */
+  function setRating(n, btn) {
+    currentRating = n;
+    document.querySelectorAll('[onclick^="setRating"]').forEach(b => {
+      b.style.background = '#fef3c7';
+      b.style.fontWeight = '500';
+    });
+    btn.style.background = '#f59e0b';
+    btn.style.color = '#fff';
+    btn.style.fontWeight = '700';
+    debugLog(`Rating set to ${n}/5`, 'ok');
+  }
+
+  /* onclick — submit feedback */
+  function submitFeedback() {
+    const msg  = document.getElementById('fbMessage').value.trim();
+    const out  = document.getElementById('fbOutput');
+    const evt  = document.getElementById('fbEvent');
+
+    if (!msg) {
+      alert('Please enter your feedback before submitting.');
+      debugLog('Feedback submit failed: empty message', 'warn');
+      return;
+    }
+
+    const stars = currentRating ? '★'.repeat(currentRating) + '☆'.repeat(5 - currentRating) : 'No rating';
+    out.textContent = `✓ Feedback received! Rating: ${stars}. Thank you for helping us improve.`;
+    out.style.display = 'block';
+    formDirty = false;
+    debugLog(`Feedback submitted — rating: ${currentRating}/5, chars: ${msg.length}`, 'ok');
+  }
+
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 7: Video + onbeforeunload
+  ──────────────────────────────────────────────────────────── */
+  function onVideoReady() {
+    const status = document.getElementById('videoStatus');
+    status.classList.add('show');
+    setTimeout(() => status.classList.remove('show'), 3500);
+    debugLog('Video: canplay event fired — video ready', 'ok');
+  }
+
+  /* Mark form dirty when user types anywhere in a form */
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('input', () => { formDirty = true; });
+  });
+
+  function warnBeforeLeave(e) {
+    if (formDirty) {
+      const msg = 'You have unsaved changes. Are you sure you want to leave?';
+      e.returnValue = msg;
+      return msg;
+    }
+  }
+
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 8: localStorage / sessionStorage
+  ──────────────────────────────────────────────────────────── */
+  const PREF_KEY = 'cityconnect_pref_event';
+
+  function savePreference(val) {
+    if (!val) return;
+    localStorage.setItem(PREF_KEY, val);
+    sessionStorage.setItem(PREF_KEY + '_session', val);
+    updateStoredDisplay(val);
+    debugLog(`Preference saved to localStorage: ${val}`, 'ok');
+  }
+
+  function loadPreference() {
+    const saved = localStorage.getItem(PREF_KEY);
+    if (saved) {
+      document.getElementById('prefEvent').value = saved;
+      updateStoredDisplay(saved);
+      debugLog(`Preference loaded from localStorage: ${saved}`, 'ok');
+    } else {
+      document.getElementById('storedDisplay').innerHTML =
+        '<em style="color:var(--muted);">No saved preference found.</em>';
+      debugLog('No preference in localStorage', 'warn');
+    }
+  }
+
+  function updateStoredDisplay(val) {
+    const labels = {
+      music:'&#127926; Music Events', tech:'&#128187; Tech Events',
+      art:'&#127912; Art & Culture', sports:'&#9917; Sports', food:'&#127814; Food & Markets'
+    };
+    document.getElementById('storedDisplay').innerHTML =
+      `<strong>Saved preference:</strong> &nbsp;${labels[val] || val}
+       &nbsp;<small style="color:var(--muted);">(localStorage + sessionStorage)</small>`;
+  }
+
+  function clearPreferences() {
+    localStorage.removeItem(PREF_KEY);
+    sessionStorage.removeItem(PREF_KEY + '_session');
+    document.getElementById('prefEvent').value = '';
+    document.getElementById('storedDisplay').innerHTML =
+      '<em style="color:var(--muted);">Preferences cleared.</em>';
+    debugLog('localStorage and sessionStorage cleared', 'warn');
+  }
+
+  /* Auto-load preference on page load */
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem(PREF_KEY);
+    if (saved) {
+      loadPreference();
+      debugLog(`Auto-loaded saved preference: ${saved}`, 'info');
+    }
+  });
+
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 9: Geolocation
+  ──────────────────────────────────────────────────────────── */
+  function findNearbyEvents() {
+    const result = document.getElementById('geoResult');
+    const content = document.getElementById('geoContent');
+
+    if (!navigator.geolocation) {
+      content.innerHTML = '<p style="color:var(--danger);">&#10007; Geolocation is not supported by your browser.</p>';
+      result.classList.add('show');
+      debugLog('Geolocation not supported', 'err');
+      return;
+    }
+
+    content.innerHTML = '<p style="color:var(--muted);">&#8987; Requesting location…</p>';
+    result.classList.add('show');
+    debugLog('Geolocation: requesting position…', 'info');
+
+    const options = {
+      enableHighAccuracy: true,   /* high accuracy — Exercise 9 */
+      timeout: 10000,             /* 10 second timeout */
+      maximumAge: 0               /* no cached position */
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const lat = position.coords.latitude.toFixed(6);
+        const lon = position.coords.longitude.toFixed(6);
+        const acc = Math.round(position.coords.accuracy);
+
+        content.innerHTML = `
+          <h3 style="color:var(--primary); margin-bottom:12px;">&#128205; Location Found</h3>
+          <p class="geo-detail">&#127758; <strong>Latitude:</strong>  ${lat}</p>
+          <p class="geo-detail">&#127758; <strong>Longitude:</strong> ${lon}</p>
+          <p class="geo-detail">&#127919; <strong>Accuracy:</strong>  ±${acc} metres</p>
+          <p class="geo-detail" style="margin-top:12px; color:var(--muted); font-size:.9rem;">
+            Nearest events are being searched within 10 km of your coordinates.
+          </p>
+          <div class="map-link">
+            <a class="btn btn-primary btn-sm"
+               href="https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=14/${lat}/${lon}"
+               target="_blank" rel="noopener">
+              &#128506; &nbsp;View on Map
+            </a>
+          </div>`;
+        debugLog(`Geolocation success: lat=${lat}, lon=${lon}, accuracy=±${acc}m`, 'ok');
+      },
+      error => {
+        /* Error handling — Exercise 9 */
+        const msgs = {
+          1: '&#128274; Permission denied. Please allow location access in your browser settings.',
+          2: '&#10060; Position unavailable. Could not determine your location.',
+          3: '&#9200; Request timed out. Please try again.'
+        };
+        content.innerHTML = `<p style="color:var(--danger);">${msgs[error.code] || 'Unknown geolocation error.'}</p>`;
+        debugLog(`Geolocation error (code ${error.code}): ${error.message}`, 'err');
+      },
+      options
+    );
+  }
+
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 8: Box Model Demo — visibility:hidden vs display:none
+  ──────────────────────────────────────────────────────────── */
+  let visHidden = false;
+  let dispNone  = false;
+
+  function toggleVisibility() {
+    visHidden = !visHidden;
+    const b = document.getElementById('demoB');
+    b.classList.toggle('demo-visibility-hidden', visHidden);
+    document.getElementById('demoNote').textContent = visHidden
+      ? 'Box B is visibility:hidden — notice the gap it still holds in the layout.'
+      : 'Box B is visible again. The layout did not shift when it reappeared.';
+    debugLog('Box B visibility:hidden = ' + visHidden, 'info');
+  }
+
+  function toggleDisplay() {
+    dispNone = !dispNone;
+    const b = document.getElementById('demoB');
+    b.classList.toggle('demo-display-none', dispNone);
+    document.getElementById('demoNote').textContent = dispNone
+      ? 'Box B is display:none — removed from the layout; Boxes A and C close the gap.'
+      : 'Box B is back — display:none removed, the layout gap is restored.';
+    debugLog('Box B display:none = ' + dispNone, 'info');
+  }
+
+  function resetDemo() {
+    visHidden = false; dispNone = false;
+    const b = document.getElementById('demoB');
+    b.classList.remove('demo-visibility-hidden', 'demo-display-none');
+    document.getElementById('demoNote').textContent = '';
+    debugLog('Box model demo reset', 'info');
+  }
+
+  /* ────────────────────────────────────────────────────────────
+     Exercise 10: Active nav highlight on scroll
+  ──────────────────────────────────────────────────────────── */
+  const sections = document.querySelectorAll('section[id], div[id="preferences"]');
+  const navLinks  = document.querySelectorAll('nav a[href^="#"]');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+<!-- ============================================================
+     EXERCISE 1: External JS file — src="main.js"
+     Covers Exercises 1–14 of the JavaScript assignment.
+     Placed after inline script so debugLog() is already defined.
+     ============================================================ -->
+<script src="main.js"></script>
+
+</body>
+</html>

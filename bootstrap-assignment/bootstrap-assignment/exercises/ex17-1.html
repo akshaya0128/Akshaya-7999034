@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 17.1 – Social Media Icons in Footer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand fw-bold">MySite</span>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-grow-1">
+    <div class="container py-5">
+      <h1 class="display-5 fw-bold mb-3">Exercise 17.1 – Bootstrap Icons</h1>
+      <p class="lead mb-5">
+        Bootstrap Icons are loaded via CDN. Use <code>&lt;i class="bi bi-icon-name"&gt;&lt;/i&gt;</code>
+        to place any icon inline.
+      </p>
+
+      <!-- Icon usage examples -->
+      <h5>Common icons in context</h5>
+      <div class="row g-3 mb-5">
+        <div class="col-6 col-md-3">
+          <div class="card text-center p-3">
+            <i class="bi bi-house-fill fs-1 text-primary mb-2"></i>
+            <span class="small">bi-house-fill</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center p-3">
+            <i class="bi bi-people-fill fs-1 text-success mb-2"></i>
+            <span class="small">bi-people-fill</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center p-3">
+            <i class="bi bi-envelope-fill fs-1 text-warning mb-2"></i>
+            <span class="small">bi-envelope-fill</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card text-center p-3">
+            <i class="bi bi-gear-fill fs-1 text-danger mb-2"></i>
+            <span class="small">bi-gear-fill</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert with icon -->
+      <div class="alert alert-success d-flex align-items-center gap-2">
+        <i class="bi bi-check-circle-fill fs-5"></i>
+        <span>Your changes have been saved successfully.</span>
+      </div>
+
+      <!-- List with icons -->
+      <h5 class="mt-4">Icon list</h5>
+      <ul class="list-unstyled">
+        <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Free and open-source</li>
+        <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>2,000+ icons</li>
+        <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>SVG and webfont support</li>
+        <li class="mb-2"><i class="bi bi-x-circle text-danger me-2"></i>Not included in Bootstrap download (separate package)</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Footer with social media icons -->
+  <footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+          <span class="fw-bold">MySite</span>
+          <p class="text-muted small mb-0 mt-1">&copy; 2026 MySite. All rights reserved.</p>
+        </div>
+        <div class="col-md-4 text-center mb-3 mb-md-0">
+          <ul class="list-unstyled d-flex justify-content-center gap-3 mb-0">
+            <li><a href="#" class="text-muted text-decoration-none small">About</a></li>
+            <li><a href="#" class="text-muted text-decoration-none small">Privacy</a></li>
+            <li><a href="#" class="text-muted text-decoration-none small">Terms</a></li>
+          </ul>
+        </div>
+        <!-- Social icons -->
+        <div class="col-md-4 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end gap-3">
+            <a href="#" class="text-muted fs-4" title="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-muted fs-4" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-muted fs-4" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-muted fs-4" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-muted fs-4" title="GitHub"><i class="bi bi-github"></i></a>
+            <a href="#" class="text-muted fs-4" title="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

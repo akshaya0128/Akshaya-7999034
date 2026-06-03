@@ -1,0 +1,1064 @@
+/*
+ * ================================================================
+ *  CityConnect — Community Event Portal
+ *  styles.css  |  CSS3 Exercises 1 – 11
+ *
+ *  EXERCISE 1: This is the external stylesheet linked from
+ *  index.html.  One embedded <style> (body background) and one
+ *  inline style (bulletin heading) remain in the HTML to show
+ *  all three CSS inclusion methods.
+ * ================================================================
+ */
+
+
+/* ================================================================
+   EXERCISE 2: CSS Syntax & Comments
+   — Design tokens kept at top as CSS custom properties
+   — Every logical section is labelled with a comment block
+   — Consistent 2-space indentation and logical property order
+   ================================================================ */
+
+/* ── CSS Custom Properties (Design Tokens) ── */
+:root {
+  --primary:   #1a56db;   /* brand blue — HEX (Exercise 4) */
+  --primary-d: #1e429f;
+  --accent:    #f59e0b;   /* amber highlight */
+  --success:   #10b981;
+  --danger:    #ef4444;
+  --bg:        #f8fafc;
+  --card:      #ffffff;
+  --text:      #1e293b;
+  --muted:     #64748b;
+  --border:    #e2e8f0;
+  --radius:    12px;
+  --shadow:    0 4px 24px rgba(0, 0, 0, 0.08);  /* RGBA (Exercise 4) */
+}
+
+html { scroll-behavior: smooth; }
+
+
+/* ================================================================
+   EXERCISE 3: Selectors Playground
+   — Universal selector *       : reset every element
+   — Element selector h2        : shared heading styles
+   — ID selector #mainHeader    : hero banner headline
+   — Class selector .eventCard  : event card containers
+   — Grouping selector h3, p    : shared base typography
+   ================================================================ */
+
+/* Universal selector — zero-out browser default margin / padding */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+/* Element selector — every h2 on the page */
+h2 {
+  font-size:   2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color:       var(--text);
+}
+
+/* ID selector — main hero headline */
+#mainHeader {
+  font-size:      3rem;
+  font-weight:    800;
+  line-height:    1.15;
+  margin-bottom:  16px;
+  color:          #ffffff;
+  letter-spacing: -0.5px;
+}
+
+/* Class selector — event card containers */
+.eventCard {
+  background:    var(--card);
+  border-radius: var(--radius);
+  overflow:      hidden;
+  /* Box model properties — Exercise 8 */
+  border:        2px solid transparent;
+  margin-bottom: 0;
+  box-shadow:    var(--shadow);
+  transition:    transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.eventCard:hover {
+  transform:    translateY(-4px);
+  box-shadow:   0 8px 36px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary);
+}
+
+/* Grouping selector — h3 and p share base line-height / colour */
+h3, p {
+  line-height: 1.6;
+  color:       var(--text);
+}
+
+h3 {
+  font-size:     1.15rem;
+  font-weight:   700;
+  margin-bottom: 8px;
+}
+
+
+/* ================================================================
+   EXERCISE 4: Color & Background Styling
+   — HEX colours: --primary #1a56db, --accent #f59e0b, etc.
+   — RGBA: shadows rgba(0,0,0,.08), overlays rgba(0,0,0,.6)
+   — body gets background-image (SVG dot pattern) + HEX fallback
+   — linear-gradient on header, hero, and gallery sections
+   ================================================================ */
+
+/* Body — HEX fallback colour + subtle SVG dot-grid background image */
+body {
+  background-color:  #f8fafc;   /* HEX fallback (Exercise 4) */
+  background-image:  url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='rgba(26%2C86%2C219%2C0.055)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  font-family:       'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color:             var(--text);
+  line-height:       1.6;
+}
+
+/* Sticky header — linear-gradient (Exercise 4) */
+header {
+  background: linear-gradient(135deg, #1a56db 0%, #1e429f 60%, #1e3a8a 100%);
+  color:      #fff;
+  padding:    0;
+  position:   sticky;
+  top:        0;
+  z-index:    100;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);  /* RGBA shadow (Exercise 4) */
+}
+
+/* Hero section — linear-gradient background (Exercise 4) */
+#home {
+  background: linear-gradient(135deg, #1a56db 0%, #1e3a8a 100%);
+  color:      #fff;
+  padding:    100px 0 80px;
+  text-align: center;
+  min-height: 45vh;  /* vh unit — Exercise 10 */
+}
+
+#home p {
+  font-size:     1.2rem;
+  opacity:       0.88;
+  max-width:     580px;
+  margin:        0 auto 36px;
+  color:         rgba(255, 255, 255, 0.9);  /* RGBA text colour (Exercise 4) */
+}
+
+/* Gallery — subtle gradient for visual depth */
+#gallery {
+  background: linear-gradient(180deg, #f1f5f9 0%, #e8edf3 100%);
+}
+
+/* Alternate sections — gradient tint */
+#feedback,
+#preferences { background: linear-gradient(180deg, #f1f5f9 0%, #eef2f7 100%); }
+#bulletin    { background: #ffffff; }
+
+/* Modal overlay — RGBA (Exercise 4) */
+.modal-overlay {
+  display:         none;
+  position:        fixed;
+  inset:           0;
+  background:      rgba(0, 0, 0, 0.6);   /* RGBA overlay (Exercise 4) */
+  z-index:         1000;
+  align-items:     center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+
+/* ================================================================
+   EXERCISE 5: Typography — Fonts and Text
+   — Google Font 'Inter' loaded via <link> in HTML <head>
+   — font-family, font-size, font-style, font-weight throughout
+   — text-align, text-transform, letter-spacing, line-height shown
+   ================================================================ */
+
+/* Section sub-headings — all key typography properties on display */
+.section-sub {
+  color:          var(--muted);
+  margin-bottom:  48px;
+  font-size:      1.05rem;
+  font-weight:    400;              /* font-weight (Exercise 5) */
+  font-style:     normal;          /* font-style  (Exercise 5) */
+  line-height:    1.8;             /* line-height (Exercise 5) */
+  letter-spacing: 0.012em;        /* letter-spacing (Exercise 5) */
+  text-align:     left;           /* text-align (Exercise 5) */
+}
+
+/* Section titles */
+.section-title {
+  font-size:      2rem;
+  font-weight:    700;
+  margin-bottom:  8px;
+  color:          var(--text);
+  text-transform: capitalize;     /* text-transform (Exercise 5) */
+  letter-spacing: -0.3px;
+}
+
+/* Logo */
+.logo {
+  font-size:      1.4rem;
+  font-weight:    800;             /* font-weight (Exercise 5) */
+  letter-spacing: -0.5px;
+  color:          #fff;
+  text-decoration: none;
+  display:        flex;
+  align-items:    center;
+  gap:            8px;
+}
+.logo span { color: var(--accent); }
+
+/* Card badge — uppercase transform + letter-spacing */
+.card-badge {
+  display:        inline-block;
+  font-size:      0.75rem;
+  font-weight:    700;
+  text-transform: uppercase;       /* text-transform (Exercise 5) */
+  letter-spacing: 0.06em;         /* letter-spacing (Exercise 5) */
+  padding:        3px 10px;
+  border-radius:  20px;
+  margin-bottom:  10px;
+  background:     #e0f2fe;
+  color:          #0369a1;
+}
+
+/* Card title */
+.card-title {
+  font-size:      1.1rem;
+  font-weight:    700;
+  margin-bottom:  6px;
+  letter-spacing: -0.2px;
+}
+
+/* Card meta — italic style */
+.card-meta {
+  font-size:     0.85rem;
+  color:         var(--muted);
+  margin-bottom: 12px;
+  font-style:    italic;           /* font-style (Exercise 5) */
+}
+
+
+/* ================================================================
+   EXERCISE 6: Link and List Styling
+   — :link, :visited, :hover, :active pseudo-classes
+   — list-style-type, list-style-position applied
+   — nav menu bullets removed; footer and bulletin lists styled
+   ================================================================ */
+
+/* Base link pseudo-classes (Exercise 6) */
+a:link    { color: var(--primary);   text-decoration: none; }
+a:visited { color: #6d28d9; }                               /* visited = purple */
+a:hover   { color: var(--primary-d); text-decoration: underline; }
+a:active  { color: var(--accent);    text-decoration: none; }
+
+/* Navigation link overrides */
+nav a:link,
+nav a:visited { color: rgba(255,255,255,0.85); text-decoration: none; }
+nav a:hover   { color: #fff;          text-decoration: none; }
+nav a:active  { color: var(--accent); text-decoration: none; }
+
+/* Footer link overrides */
+.footer-col a:link    { color: rgba(255,255,255,0.6);    text-decoration: none; }
+.footer-col a:visited { color: rgba(180,160,240,0.75); }
+.footer-col a:hover   { color: var(--accent); text-decoration: none; }
+.footer-col a:active  { color: #fff; }
+
+/* Navigation — list-style-type: none removes default bullets */
+nav {
+  display:             flex;
+  gap:                 4px;
+  align-items:         center;
+  list-style-type:     none;          /* remove bullets (Exercise 6) */
+  list-style-position: inside;
+  padding:             0;
+}
+
+/* Bulletin list — custom disc bullets with outside positioning */
+.bulletin-list {
+  list-style-type:     disc;          /* list-style-type (Exercise 6) */
+  list-style-position: outside;       /* list-style-position (Exercise 6) */
+  padding-left:        22px;
+  margin:              10px 0 14px;
+}
+.bulletin-list li {
+  padding:       3px 0;
+  margin-bottom: 5px;
+  line-height:   1.65;
+}
+
+/* Footer links — no bullets */
+.footer-col { list-style-type: none; }
+
+
+/* ================================================================
+   EXERCISE 7: Table Styling
+   — border-collapse: collapse
+   — zebra striping with :nth-child(even)
+   — padding and background on th and td
+   — text-align: center applied to the table
+   ================================================================ */
+
+/* Table wrapper */
+.gallery-wrap {
+  overflow-x:    auto;
+  border-radius: var(--radius);
+  box-shadow:    var(--shadow);
+}
+
+/* Style for table, th, td — Exercise 7 */
+table.gallery {
+  width:           100%;
+  border-collapse: collapse;          /* Exercise 7 */
+  background:      var(--card);
+  text-align:      center;            /* Exercise 7 */
+}
+
+/* Table caption */
+table.gallery caption {
+  caption-side: bottom;
+  font-size:    0.85rem;
+  color:        var(--muted);
+  padding:      12px 16px;
+  text-align:   left;
+  font-style:   italic;
+}
+
+/* th — background color + border + padding (Exercise 7) */
+table.gallery th {
+  background:     var(--primary);               /* background color (Exercise 7) */
+  color:          #fff;
+  padding:        14px 20px;                    /* padding (Exercise 7) */
+  font-size:      0.88rem;
+  text-align:     center;
+  font-weight:    600;
+  border:         1px solid rgba(255,255,255,0.15);  /* border (Exercise 7) */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* td — border + padding (Exercise 7) */
+table.gallery td {
+  padding:        16px;                          /* padding (Exercise 7) */
+  text-align:     center;
+  border:         1px solid var(--border);       /* border (Exercise 7) */
+  vertical-align: top;
+}
+
+/* Zebra striping — :nth-child(even) (Exercise 7) */
+table.gallery tbody tr:nth-child(even) td { background: #f1f5f9; }
+table.gallery tbody tr:nth-child(odd)  td { background: #ffffff; }
+
+/* Row hover for extra polish */
+table.gallery tbody tr:hover td {
+  background: #e0f2fe;
+  transition: background 0.2s;
+}
+
+/* Gallery images */
+.gallery-img {
+  width:         200px;
+  height:        140px;
+  object-fit:    cover;
+  border:        3px solid var(--border);
+  border-radius: 8px;
+  display:       block;
+  margin:        0 auto 8px;
+  cursor:        pointer;
+  transition:    transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.gallery-img:hover    { border-color: var(--primary); }
+.gallery-img.enlarged {
+  transform:    scale(2.2);
+  box-shadow:   0 20px 60px rgba(0,0,0,0.35);
+  border-color: var(--accent);
+  z-index:      10;
+  position:     relative;
+}
+.gallery-img-caption { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+
+/* ================================================================
+   EXERCISE 8: Box Model & Layout Control
+   — border, padding, margin explicitly set on .eventCard
+   — outline (distinct from border) on focused form fields
+   — .demo-visibility-hidden and .demo-display-none classes
+     demonstrate the difference between the two hiding methods
+   ================================================================ */
+
+/* Event card body — explicit padding (Exercise 8) */
+.eventCard .card-body,
+.card-body { padding: 20px; margin: 0; }  /* padding + margin (Exercise 8) */
+
+/* Event card image — border bottom (Exercise 8) */
+.eventCard .card-img,
+.card-img {
+  width:         100%;
+  height:        180px;
+  object-fit:    cover;
+  display:       block;
+  border-bottom: 2px solid var(--border);  /* border (Exercise 8) */
+}
+
+/* Form field base styles */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding:       11px 14px;                /* padding (Exercise 8) */
+  border:        2px solid var(--border);  /* border (Exercise 8) */
+  border-radius: 8px;
+  font-size:     1rem;
+  font-family:   inherit;
+  color:         var(--text);
+  background:    #fff;
+  transition:    border-color 0.2s, box-shadow 0.2s;
+  outline:       none;
+}
+
+/* Outline on focus — distinct from border (Exercise 8) */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color:   var(--primary);
+  outline:        3px solid rgba(26, 86, 219, 0.22);  /* outline (Exercise 8) */
+  outline-offset: 1px;
+  box-shadow:     0 0 0 3px rgba(26, 86, 219, 0.1);
+}
+
+.form-group input.error { border-color: var(--danger); }
+.form-group input.valid { border-color: var(--success); }
+
+/* Visibility demo boxes */
+.demo-row {
+  display:       flex;
+  align-items:   center;
+  flex-wrap:     wrap;
+  gap:           12px;
+  padding:       20px;
+  background:    #f8fafc;
+  border:        2px dashed var(--border);  /* border (Exercise 8) */
+  border-radius: var(--radius);
+  margin-top:    20px;
+}
+
+.demo-box {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  width:           160px;
+  height:          60px;
+  border:          2px solid var(--primary);  /* border (Exercise 8) */
+  border-radius:   8px;
+  padding:         12px 16px;                /* padding (Exercise 8) */
+  margin:          4px;                      /* margin (Exercise 8) */
+  font-weight:     700;
+  font-size:       0.82rem;
+  color:           var(--primary);
+  background:      #eff6ff;
+  text-align:      center;
+  transition:      opacity 0.3s;
+}
+
+/* visibility: hidden — element holds its space in the layout */
+.demo-visibility-hidden { visibility: hidden; }
+
+/* display: none — element is removed from the layout flow entirely */
+.demo-display-none      { display: none; }
+
+
+/* ================================================================
+   EXERCISE 9: Multi-Column Layout
+   — column-count: 2
+   — column-gap: 30px
+   — column-rule: 1px solid gray
+   ================================================================ */
+
+/* Community Bulletin — newspaper two-column layout */
+.bulletin-content {
+  column-count: 2;                    /* Exercise 9 */
+  column-gap:   30px;                 /* Exercise 9 */
+  column-rule:  1px solid #cbd5e1;   /* Exercise 9 */
+  text-align:   justify;
+  hyphens:      auto;
+}
+
+.bulletin-content p {
+  margin-bottom: 14px;
+  font-size:     0.95rem;
+  line-height:   1.75;
+  break-inside:  avoid;
+}
+
+.bulletin-content h4 {
+  font-size:      0.95rem;
+  font-weight:    700;
+  color:          var(--primary);
+  margin-bottom:  6px;
+  margin-top:     4px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  break-after:    avoid;
+}
+
+.bulletin-content ul {
+  list-style-type:     disc;
+  list-style-position: outside;
+  padding-left:        20px;
+  margin-bottom:       14px;
+  break-inside:        avoid;
+}
+
+.bulletin-content ul li {
+  margin-bottom: 5px;
+  font-size:     0.92rem;
+  line-height:   1.6;
+}
+
+.bulletin-label {
+  display:        inline-block;
+  background:     var(--primary);
+  color:          #fff;
+  font-size:      0.7rem;
+  font-weight:    700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding:        3px 10px;
+  border-radius:  4px;
+  margin-bottom:  14px;
+}
+
+
+/* ================================================================
+   EXERCISE 10: Responsive Web Design — Media Queries
+   — Breakpoints: 768px (tablet) and 480px (mobile)
+   — Fluid units: %, vw, vh used throughout
+   — Flexbox and CSS Grid for responsive layout
+   ================================================================ */
+
+/* Fluid container using % width (Exercise 10) */
+.container {
+  max-width: 1140px;
+  width:     92%;     /* % unit — fluid width (Exercise 10) */
+  margin:    0 auto;
+  padding:   0 24px;
+}
+
+/* Card grid — CSS Grid with auto-fit (Exercise 10) */
+.cards {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* Grid (Exercise 10) */
+  gap:                   24px;
+}
+
+/* Form grid — two columns desktop */
+.form-grid {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   20px;
+}
+.form-full { grid-column: 1 / -1; }
+
+/* Footer grid — auto-fit columns */
+.footer-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:                   32px;
+  margin-bottom:         32px;
+}
+
+/* ── Tablet: ≤ 768px ── */
+@media (max-width: 768px) {
+  /* Stack nav links vertically (Exercise 10) */
+  .header-inner {
+    flex-direction: column;
+    height:         auto;
+    padding:        12px 0;
+    gap:            8px;
+  }
+
+  nav { flex-wrap: wrap; justify-content: center; }
+
+  /* Reduce nav font size (Exercise 10) */
+  nav a { padding: 6px 10px; font-size: 0.82rem; }
+
+  /* Reduce heading font sizes (Exercise 10) */
+  #mainHeader,
+  #home h1 { font-size: 2.2rem; }
+
+  .section-title { font-size: 1.75rem; }
+
+  /* Single-column form (Exercise 10) */
+  .form-grid { grid-template-columns: 1fr; }
+
+  /* Reduce section vertical padding */
+  .section { padding: 52px 0; }
+
+  /* Smaller gallery images (Exercise 10) */
+  .gallery-img { width: 150px; height: 110px; }
+
+  /* Multi-column bulletin collapses to single column */
+  .bulletin-content { column-count: 1; column-rule: none; }
+
+  /* Fluid card image height */
+  .card-img { height: 160px; }
+}
+
+/* ── Mobile: ≤ 480px ── */
+@media (max-width: 480px) {
+  .container { width: 100%; padding: 0 16px; }
+
+  #mainHeader,
+  #home h1 { font-size: 1.75rem; }   /* font-size reduced (Exercise 10) */
+
+  .section-title { font-size: 1.45rem; }
+
+  .section { padding: 36px 0; }
+
+  /* Stack hero buttons full-width (Exercise 10) */
+  .hero-btns        { flex-direction: column; align-items: center; }
+  .btn              { width: 100%; max-width: 300px; justify-content: center; }
+
+  /* Reduce gallery images (Exercise 10) */
+  .gallery-img      { width: 120px; height: 90px; }
+
+  /* Full-width video */
+  .video-wrapper    { width: 100%; }
+
+  /* Demo boxes wrap on small screens */
+  .demo-row         { gap: 8px; }
+  .demo-box         { width: 140px; height: 54px; font-size: 0.78rem; }
+}
+
+
+/* ================================================================
+   EXERCISE 11: Debug & DevTools
+   — The #debug section at the page bottom is the in-page
+     console. Chrome DevTools (F12 → Console) mirrors all logs.
+   — Styles here produce a dark terminal aesthetic for clarity.
+   ================================================================ */
+
+/* In-page debug terminal */
+#debugConsole {
+  background:    #0f172a;
+  color:         #a3e635;
+  border-radius: var(--radius);
+  padding:       20px;
+  font-family:   'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+  font-size:     0.85rem;
+  max-height:    280px;
+  overflow-y:    auto;
+  line-height:   1.7;
+}
+
+.debug-line       { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 2px 0; }
+.debug-line.warn  { color: #fbbf24; }
+.debug-line.err   { color: #f87171; }
+.debug-line.info  { color: #60a5fa; }
+.debug-line.ok    { color: #34d399; }
+
+
+/* ================================================================
+   SHARED COMPONENT STYLES
+   (used across all sections — not exercise-specific)
+   ================================================================ */
+
+/* Utility classes */
+.highlight {
+  background:    #fef9c3;
+  border-radius: 4px;
+  padding:       0 4px;
+  font-weight:   600;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  clip: rect(0,0,0,0); overflow: hidden;
+}
+.section  { padding: 80px 0; }
+.divider  { border: none; border-top: 2px solid var(--border); margin: 0; }
+
+/* Header inner row */
+.header-inner {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  height:          64px;
+}
+
+/* Nav link styles */
+nav a {
+  color:           rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding:         8px 16px;
+  border-radius:   8px;
+  font-weight:     500;
+  font-size:       0.95rem;
+  transition:      background 0.2s, color 0.2s;
+}
+nav a:hover,
+nav a.active { background: rgba(255,255,255,0.18); color: #fff; }
+
+nav a.btn-nav {
+  background:  var(--accent);
+  color:       #1e293b;
+  font-weight: 700;
+  margin-left: 8px;
+}
+nav a.btn-nav:hover { background: #d97706; color: #fff; }
+
+/* Generic button */
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             8px;
+  padding:         13px 28px;
+  border-radius:   8px;
+  font-weight:     700;
+  font-size:       1rem;
+  cursor:          pointer;
+  border:          none;
+  text-decoration: none;
+  font-family:     inherit;
+  transition:      transform 0.15s, box-shadow 0.15s, background 0.2s;
+}
+.btn:hover       { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+.btn-primary     { background: var(--accent); color: #1e293b; }
+.btn-outline     { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+.btn-outline:hover { border-color: #fff; }
+.btn-success     { background: var(--success); color: #fff; }
+.btn-danger      { background: var(--danger);  color: #fff; }
+.btn-sm          { padding: 8px 18px; font-size: 0.9rem; }
+
+/* Hero buttons */
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* Welcome banner */
+#welcomeBanner {
+  background:      linear-gradient(90deg, #1a56db, #4f46e5);
+  color:           #fff;
+  padding:         20px 32px;
+  border-radius:   var(--radius);
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             16px;
+  flex-wrap:       wrap;
+  box-shadow:      var(--shadow);
+  margin-bottom:   48px;
+}
+#welcomeBanner .msg        { font-size: 1.1rem; font-weight: 500; }
+#welcomeBanner .msg strong { font-size: 1.2rem; }
+
+/* Form helpers */
+.form-group             { display: flex; flex-direction: column; gap: 6px; }
+.form-group label       { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.form-group .hint       { font-size: 0.78rem; color: var(--muted); }
+.form-group .err-msg    { font-size: 0.78rem; color: var(--danger); display: none; }
+.form-group .err-msg.show { display: block; }
+.char-count             { font-size: 0.78rem; color: var(--muted); text-align: right; }
+
+/* Style for <output> confirmation */
+output#confirmOutput {
+  display:       none;
+  margin-top:    20px;
+  background:    #f0fdf4;
+  border:        2px solid var(--success);
+  color:         #065f46;
+  padding:       16px 20px;
+  border-radius: 10px;
+  font-weight:   600;
+  font-size:     0.95rem;
+}
+output#confirmOutput.show { display: block; }
+
+/* Feedback output */
+#fbOutput {
+  display:       none;
+  margin-top:    16px;
+  background:    #f0fdf4;
+  border:        2px solid var(--success);
+  color:         #065f46;
+  padding:       14px 18px;
+  border-radius: 10px;
+  font-weight:   600;
+}
+#fbOutput.show { display: block; }
+
+/* Event fee display */
+.fee-display {
+  background:      #eff6ff;
+  border:          2px solid #bfdbfe;
+  border-radius:   10px;
+  padding:         14px 20px;
+  font-weight:     700;
+  color:           var(--primary);
+  font-size:       1.1rem;
+  text-align:      center;
+  min-height:      54px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  margin-top:      12px;
+}
+
+/* Video wrapper */
+.video-wrapper {
+  background:    #000;
+  border-radius: var(--radius);
+  overflow:      hidden;
+  box-shadow:    var(--shadow);
+  position:      relative;
+  max-width:     700px;
+  margin:        0 auto;
+}
+.video-wrapper video { width: 100%; display: block; }
+
+#videoStatus {
+  position:       absolute;
+  top:            16px;
+  left:           50%;
+  transform:      translateX(-50%);
+  background:     rgba(16,185,129,0.9);
+  color:          #fff;
+  padding:        8px 18px;
+  border-radius:  20px;
+  font-weight:    700;
+  font-size:      0.9rem;
+  opacity:        0;
+  transition:     opacity 0.4s;
+  pointer-events: none;
+  white-space:    nowrap;
+}
+#videoStatus.show { opacity: 1; }
+
+/* Storage preferences card */
+.storage-card {
+  background:     var(--card);
+  border-radius:  var(--radius);
+  box-shadow:     var(--shadow);
+  padding:        32px;
+  display:        flex;
+  flex-direction: column;
+  gap:            20px;
+}
+#storedDisplay {
+  background:    #f8fafc;
+  border:        2px dashed var(--border);
+  border-radius: 8px;
+  padding:       16px;
+  font-size:     0.95rem;
+  min-height:    56px;
+  display:       flex;
+  align-items:   center;
+}
+
+/* Geolocation result card */
+#geoResult {
+  background:    var(--card);
+  border-radius: var(--radius);
+  box-shadow:    var(--shadow);
+  padding:       28px;
+  margin-top:    24px;
+  display:       none;
+}
+#geoResult.show    { display: block; }
+.geo-detail        { font-size: 0.95rem; margin: 6px 0; }
+.geo-detail strong { color: var(--primary); }
+.map-link          { margin-top: 14px; }
+
+/* Confirmation modal */
+.modal {
+  background:    var(--card);
+  border-radius: var(--radius);
+  padding:       36px;
+  max-width:     440px;
+  width:         90%;
+  box-shadow:    0 20px 60px rgba(0,0,0,0.3);
+  text-align:    center;
+}
+.modal h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--primary); }
+.modal p  { color: var(--muted); margin-bottom: 24px; }
+
+/* Footer */
+footer {
+  background: #0f172a;
+  color:      rgba(255,255,255,0.65);
+  padding:    40px 0 28px;
+}
+.footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 14px; }
+.footer-col a  {
+  display:         block;
+  color:           rgba(255,255,255,0.6);
+  text-decoration: none;
+  margin-bottom:   8px;
+  font-size:       0.9rem;
+  transition:      color 0.2s;
+}
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top:  1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  text-align:  center;
+  font-size:   0.85rem;
+}
+
+/* Page load animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+
+
+/* ================================================================
+   JAVASCRIPT EXERCISES 1–14 — Exercise Panel & Component Styles
+   ================================================================ */
+
+/* Exercise Panel container */
+.ex-panel {
+  background:    var(--card);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       24px 28px;
+  margin-bottom: 22px;
+  box-shadow:    0 1px 4px rgba(0,0,0,.06);
+}
+
+/* Exercise number chip */
+.ex-label {
+  display:        inline-block;
+  font-size:      .7rem;
+  font-weight:    700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color:          var(--primary);
+  background:     #eff6ff;
+  border:         1px solid #bfdbfe;
+  border-radius:  20px;
+  padding:        2px 10px;
+  margin-bottom:  8px;
+}
+
+/* Panel heading */
+.ex-title {
+  font-size:     1.05rem;
+  font-weight:   700;
+  color:         var(--text);
+  margin:        0 0 14px;
+  line-height:   1.3;
+}
+
+/* ── Dynamic Event Cards (Ex 7–8) ── */
+.js-cards-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap:                   14px;
+}
+
+.js-event-card {
+  background:    var(--card);
+  border:        1px solid var(--border);
+  border-radius: var(--radius);
+  padding:       16px;
+  box-shadow:    0 1px 3px rgba(0,0,0,.06);
+  transition:    box-shadow .2s;
+}
+.js-event-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.1); }
+
+.js-card-badge {
+  display:        inline-block;
+  font-size:      .68rem;
+  font-weight:    700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  background:     #eff6ff;
+  color:          var(--primary);
+  border-radius:  20px;
+  padding:        2px 8px;
+  margin-bottom:  8px;
+}
+
+.js-card-title {
+  font-weight:   700;
+  font-size:     .95rem;
+  color:         var(--text);
+  margin-bottom: 5px;
+}
+
+.js-card-meta {
+  font-size:     .82rem;
+  color:         var(--muted);
+  margin-bottom: 12px;
+}
+
+.js-card-actions {
+  display:   flex;
+  gap:       6px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.js-cancel-btn {
+  background: #fee2e2;
+  color:      #b91c1c;
+  border:     none;
+}
+.js-cancel-btn:hover { background: #fecaca; }
+
+.js-card-status {
+  font-size:  .78rem;
+  min-height: 16px;
+  margin-top: 4px;
+}
+
+/* ── Loading Spinner (Ex 9) ── */
+.spinner {
+  width:        20px;
+  height:       20px;
+  border:       3px solid #e2e8f0;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation:    spin .7s linear infinite;
+  flex-shrink:  0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Exercise 3 status list ── */
+.ex3-item        { padding: 4px 0; font-size: .9rem; }
+.ex3-active      { color: #15803d; }
+.ex3-full        { color: #d97706; }
+.ex3-past        { color: var(--muted); text-decoration: line-through; }
+
+/* ── Category stat badges (Ex 4 closure tracker) ── */
+.stat-badge {
+  display:       inline-block;
+  background:    #f0fdf4;
+  color:         #15803d;
+  border:        1px solid #bbf7d0;
+  border-radius: 20px;
+  padding:       3px 10px;
+  font-size:     .8rem;
+  font-weight:   600;
+}
+
+/* ── Code output list (Ex 5, 6, 9) ── */
+.code-list {
+  list-style: none;
+  padding:    0;
+  margin:     8px 0 0;
+  font-size:  .875rem;
+}
+.code-list li {
+  padding:       4px 0;
+  border-bottom: 1px solid var(--border);
+  color:         var(--text);
+  line-height:   1.5;
+}
+.code-list li:last-child { border-bottom: none; }

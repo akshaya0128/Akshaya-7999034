@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 9.1 – Button Variants</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="display-5 fw-bold mb-4">Exercise 9.1 – All Button Variants</h1>
+
+    <!-- Solid buttons -->
+    <h5 class="mt-3">Solid (Filled) Buttons</h5>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <button class="btn btn-primary">btn-primary</button>
+      <button class="btn btn-secondary">btn-secondary</button>
+      <button class="btn btn-success">btn-success</button>
+      <button class="btn btn-danger">btn-danger</button>
+      <button class="btn btn-warning">btn-warning</button>
+      <button class="btn btn-info">btn-info</button>
+      <button class="btn btn-light">btn-light</button>
+      <button class="btn btn-dark">btn-dark</button>
+      <button class="btn btn-link">btn-link</button>
+    </div>
+
+    <!-- Outline buttons -->
+    <h5>Outline Buttons (btn-outline-*)</h5>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <button class="btn btn-outline-primary">btn-outline-primary</button>
+      <button class="btn btn-outline-secondary">btn-outline-secondary</button>
+      <button class="btn btn-outline-success">btn-outline-success</button>
+      <button class="btn btn-outline-danger">btn-outline-danger</button>
+      <button class="btn btn-outline-warning">btn-outline-warning</button>
+      <button class="btn btn-outline-info">btn-outline-info</button>
+      <button class="btn btn-outline-light">btn-outline-light</button>
+      <button class="btn btn-outline-dark">btn-outline-dark</button>
+    </div>
+
+    <!-- Button sizes -->
+    <h5>Sizes</h5>
+    <div class="d-flex align-items-center flex-wrap gap-2 mb-4">
+      <button class="btn btn-primary btn-lg">btn-lg</button>
+      <button class="btn btn-primary">Default</button>
+      <button class="btn btn-primary btn-sm">btn-sm</button>
+    </div>
+
+    <!-- Block / full-width -->
+    <h5>Full-width (d-grid)</h5>
+    <div class="d-grid gap-2 mb-4">
+      <button class="btn btn-primary">Full-width button 1</button>
+      <button class="btn btn-outline-secondary">Full-width button 2</button>
+    </div>
+
+    <!-- States -->
+    <h5>States</h5>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <button class="btn btn-primary active" aria-pressed="true">Active</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+      <button class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        Loading…
+      </button>
+    </div>
+
+    <!-- Anchor styled as button -->
+    <h5>Anchor as Button</h5>
+    <div class="d-flex gap-2">
+      <a href="#" class="btn btn-success" role="button">Anchor button</a>
+      <a href="#" class="btn btn-outline-danger" role="button">Outline anchor</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

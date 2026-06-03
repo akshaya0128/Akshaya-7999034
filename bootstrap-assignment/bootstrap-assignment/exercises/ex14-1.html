@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex 14.1 – Responsive Display</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="display-5 fw-bold mb-4">Exercise 14.1 – d-none, d-md-block, d-lg-flex</h1>
+
+    <div class="alert alert-info">
+      Resize the window to different widths to see sections appear and disappear.
+    </div>
+
+    <!-- d-none: hidden on all, override per breakpoint -->
+    <div class="card mb-4 border-danger">
+      <div class="card-header bg-danger text-white">1. d-none d-md-block – hidden on mobile, visible on md+</div>
+      <div class="card-body d-none d-md-block">
+        <p class="mb-0">
+          This content uses <code>d-none d-md-block</code>. It is invisible on screens narrower than 768px
+          and becomes a block element on medium screens and above.
+        </p>
+      </div>
+    </div>
+
+    <div class="card mb-4 border-success">
+      <div class="card-header bg-success text-white">2. d-none d-lg-flex – hidden below lg, flex on lg+</div>
+      <div class="card-body d-none d-lg-flex gap-3 align-items-center">
+        <span class="badge bg-success fs-6">Flex item A</span>
+        <span class="badge bg-primary fs-6">Flex item B</span>
+        <span class="badge bg-warning text-dark fs-6">Flex item C</span>
+        <p class="mb-0 ms-3">Visible only on large (≥ 992px) screens as a flex row.</p>
+      </div>
+    </div>
+
+    <div class="card mb-4 border-warning">
+      <div class="card-header bg-warning">3. d-block d-md-none – visible only on mobile</div>
+      <div class="card-body d-block d-md-none">
+        <p class="mb-0">
+          <code>d-block d-md-none</code>: visible only below 768px. Useful for showing a mobile-only CTA
+          or a simplified layout.
+        </p>
+      </div>
+    </div>
+
+    <div class="card mb-4 border-primary">
+      <div class="card-header bg-primary text-white">4. Combined responsive display — three states</div>
+      <div class="card-body">
+        <p class="d-block d-sm-none text-danger fw-bold">📱 You are on MOBILE (xs) — d-block d-sm-none</p>
+        <p class="d-none d-sm-block d-lg-none text-warning fw-bold">📟 You are on TABLET (sm–md) — d-none d-sm-block d-lg-none</p>
+        <p class="d-none d-lg-block text-success fw-bold">🖥 You are on DESKTOP (lg+) — d-none d-lg-block</p>
+      </div>
+    </div>
+
+    <!-- Reference table -->
+    <h5 class="mt-4">Display utility pattern</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered table-sm">
+        <thead class="table-dark">
+          <tr><th>Class</th><th>Equivalent CSS</th><th>When visible</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>d-none</code></td><td>display: none</td><td>Never (hidden)</td></tr>
+          <tr><td><code>d-block</code></td><td>display: block</td><td>Always</td></tr>
+          <tr><td><code>d-flex</code></td><td>display: flex</td><td>Always (as flex)</td></tr>
+          <tr><td><code>d-none d-md-block</code></td><td>—</td><td>md+ only (≥768px)</td></tr>
+          <tr><td><code>d-block d-md-none</code></td><td>—</td><td>mobile only (&lt;768px)</td></tr>
+          <tr><td><code>d-none d-lg-flex</code></td><td>—</td><td>lg+ only (≥992px) as flex</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

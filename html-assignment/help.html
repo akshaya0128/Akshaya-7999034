@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Centre — CityConnect</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #1a56db; --accent: #f59e0b; --bg: #f8fafc;
+      --card: #fff; --text: #1e293b; --muted: #64748b;
+      --border: #e2e8f0; --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    header {
+      background: linear-gradient(135deg,#1a56db,#1e3a8a);
+      color: #fff; padding: 20px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    header a { color: var(--accent); font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    main { max-width: 820px; margin: 60px auto; padding: 0 24px; }
+    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+    .lead { color: var(--muted); font-size: 1.1rem; margin-bottom: 48px; }
+    .faq { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+           margin-bottom: 16px; overflow: hidden; }
+    .faq summary {
+      padding: 18px 24px; font-weight: 700; cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 1.4rem; color: var(--primary); }
+    .faq[open] summary::after { content: '−'; }
+    .faq .body { padding: 0 24px 20px; color: var(--muted); border-top: 1px solid var(--border); }
+    .back { display: inline-block; margin-top: 40px; color: var(--primary); font-weight: 700; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 40px; color: var(--muted); font-size: .85rem; }
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html">&#9670; CityConnect</a>
+  <span style="font-size:.9rem; opacity:.8;">Help Centre</span>
+</header>
+
+<main>
+  <h1>&#128218; Help Centre</h1>
+  <p class="lead">Answers to common questions about the CityConnect Community Portal.</p>
+
+  <details class="faq">
+    <summary>How do I register for an event?</summary>
+    <div class="body">
+      <p>Navigate to the <strong>Register</strong> section, fill in your name, email, preferred date, and event type, then click <em>Register Now</em>. You will see an on-screen confirmation and receive an email shortly after.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Can I save my event preferences?</summary>
+    <div class="body">
+      <p>Yes! Visit the <strong>Save Your Preferences</strong> section, choose your favourite event type, and it will be remembered for your next visit using <code>localStorage</code>. Click <em>Clear All Preferences</em> to remove saved data.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>How does Find Nearby Events work?</summary>
+    <div class="body">
+      <p>The portal uses your browser's Geolocation API (with high accuracy mode). When you click <em>Find Nearby Events</em>, your browser will ask for permission. If you allow it, we display your coordinates and a map link showing events within 10 km.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>Why do I see a warning when leaving the page?</summary>
+    <div class="body">
+      <p>If you have started filling out a form but have not submitted it, the portal uses the <code>onbeforeunload</code> event to warn you so you don't accidentally lose your data.</p>
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>What is the Debug Console?</summary>
+    <div class="body">
+      <p>The Debug Console at the bottom of the page logs all user interactions in real time. It mirrors output to the browser's built-in Console tab (F12 → Console), making it useful for learning HTML5 event handling alongside Chrome DevTools.</p>
+    </div>
+  </details>
+
+  <a class="back" href="index.html">&larr; Back to Portal</a>
+</main>
+
+<footer>&copy; 2025 CityConnect Community Portal</footer>
+</body>
+</html>
